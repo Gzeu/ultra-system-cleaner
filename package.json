@@ -1,0 +1,78 @@
+{
+  "name": "@gzeu/ultra-system-cleaner",
+  "version": "1.1.0",
+  "description": "🔥 Ultra-performant cross-platform system cleaner with beautiful CLI interface and configuration system",
+  "keywords": [
+    "system-cleaner",
+    "disk-cleanup",
+    "temp-cleaner",
+    "cache-cleaner",
+    "npm-cache",
+    "browser-cache",
+    "cross-platform",
+    "cli",
+    "cleanup-tool",
+    "performance"
+  ],
+  "main": "lib/index.js",
+  "bin": {
+    "ultra_clean": "./bin/ultra-clean.js",
+    "system_clean": "./bin/ultra-clean.js"
+  },
+  "scripts": {
+    "start": "node bin/ultra-clean.js",
+    "clean": "node bin/ultra-clean.js",
+    "test": "node bin/ultra-clean.js --dry-run",
+    "test:verbose": "node bin/ultra-clean.js --dry-run --verbose",
+    "build": "echo 'Build completed'",
+    "prepublish": "npm test"
+  },
+  "author": {
+    "name": "George Pricop",
+    "url": "https://github.com/Gzeu",
+    "email": "contact@gzeu.dev"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Gzeu/ultra-system-cleaner.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Gzeu/ultra-system-cleaner/issues"
+  },
+  "homepage": "https://github.com/Gzeu/ultra-system-cleaner#readme",
+  "engines": {
+    "node": ">=14.0.0",
+    "npm": ">=6.0.0"
+  },
+  "os": ["win32", "darwin", "linux"],
+  "dependencies": {
+    "commander": "^11.1.0",
+    "chalk": "^4.1.2",
+    "ora": "^5.4.1",
+    "bytes": "^3.1.2",
+    "rimraf": "^5.0.5",
+    "trash": "^8.1.1",
+    "enquirer": "^2.4.1",
+    "boxen": "^5.1.2",
+    "gradient-string": "^2.0.2",
+    "figlet": "^1.7.0",
+    "node-fetch": "^2.7.0"
+  },
+  "devDependencies": {
+    "prettier": "^3.0.0",
+    "eslint": "^8.0.0"
+  },
+  "files": [
+    "bin/",
+    "lib/",
+    "config/",
+    "README.md",
+    "LICENSE"
+  ],
+  "preferGlobal": true,
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  }
+}

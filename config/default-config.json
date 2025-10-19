@@ -1,0 +1,145 @@
+{
+  "version": "1.0.0",
+  "description": "Ultra System Cleaner Configuration File",
+
+  "global": {
+    "enabled": true,
+    "dryRun": false,
+    "verbose": false,
+    "parallel": true,
+    "backup": true,
+    "backupLocation": "~/.ultra-cleaner-backups",
+    "logLevel": "info",
+    "logFile": "~/.ultra-cleaner.log"
+  },
+
+  "categories": {
+    "system": {
+      "enabled": true,
+      "priority": 1,
+      "description": "System temporary files and caches"
+    },
+    "user": {
+      "enabled": true,
+      "priority": 2,
+      "description": "User-specific cache and temporary data"
+    },
+    "browsers": {
+      "enabled": true,
+      "priority": 3,
+      "description": "Web browser caches and data"
+    },
+    "apps": {
+      "enabled": true,
+      "priority": 4,
+      "description": "Application-specific cache and temporary files"
+    },
+    "npm": {
+      "enabled": true,
+      "priority": 5,
+      "description": "Node.js and package manager caches"
+    },
+    "logs": {
+      "enabled": true,
+      "priority": 6,
+      "description": "System and application log files"
+    }
+  },
+
+  "customPaths": [
+    {
+      "name": "custom-development",
+      "enabled": true,
+      "category": "user",
+      "paths": [
+        {
+          "path": "~/Projects/*/node_modules/.cache",
+          "description": "Project-specific cache directories",
+          "recursive": true,
+          "excludePatterns": ["**/important-cache/**"]
+        },
+        {
+          "path": "~/Downloads/temp",
+          "description": "Temporary download folder",
+          "recursive": true
+        }
+      ]
+    },
+    {
+      "name": "work-files",
+      "enabled": false,
+      "category": "user",
+      "paths": [
+        {
+          "path": "~/Documents/Work/temp",
+          "description": "Work-related temporary files",
+          "recursive": true,
+          "excludePatterns": ["**/*.important", "**/backup/**"]
+        }
+      ]
+    }
+  ],
+
+  "excludePatterns": {
+    "global": [
+      "**/node_modules/**",
+      "**/.git/**",
+      "**/backup/**",
+      "**/*.log",
+      "**/important*/**"
+    ],
+    "perCategory": {
+      "browsers": [
+        "**/Default/Extensions/**",
+        "**/Default/Local Extension Settings/**"
+      ],
+      "apps": [
+        "**/Microsoft/Teams/Meeting Recordings/**"
+      ]
+    }
+  },
+
+  "includePatterns": {
+    "global": [
+      "**/*.tmp",
+      "**/*.temp",
+      "**/*.cache",
+      "**/cache/**",
+      "**/temp/**",
+      "**/tmp/**"
+    ]
+  },
+
+  "schedule": {
+    "enabled": false,
+    "frequency": "weekly",
+    "dayOfWeek": "sunday",
+    "time": "02:00",
+    "categories": ["system", "user", "browsers"],
+    "dryRun": true
+  },
+
+  "notifications": {
+    "enabled": true,
+    "desktopNotifications": true,
+    "sound": true,
+    "completionReport": true,
+    "errorAlerts": true
+  },
+
+  "performance": {
+    "maxParallelJobs": 4,
+    "chunkSize": 1000,
+    "timeout": 30000,
+    "retryAttempts": 3
+  },
+
+  "backup": {
+    "enabled": true,
+    "location": "~/.ultra-cleaner-backups",
+    "retentionDays": 30,
+    "compression": true,
+    "encrypt": false,
+    "maxSizeGB": 10
+  }
+}
