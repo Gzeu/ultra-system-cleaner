@@ -1,6 +1,6 @@
 {
   "name": "@gzeu/ultra-system-cleaner",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "🔥 Ultra-performant cross-platform system cleaner with beautiful CLI interface and configuration system",
   "keywords": [
     "system-cleaner",
@@ -46,7 +46,11 @@
     "node": ">=14.0.0",
     "npm": ">=6.0.0"
   },
-  "os": ["win32", "darwin", "linux"],
+  "os": [
+    "win32",
+    "darwin",
+    "linux"
+  ],
   "dependencies": {
     "commander": "^11.1.0",
     "chalk": "^4.1.2",
