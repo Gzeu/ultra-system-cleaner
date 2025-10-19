@@ -16,6 +16,7 @@
   ],
   "main": "lib/index.js",
   "bin": {
+    "ultra-system-cleaner": "./bin/ultra-clean.js",
     "ultra_clean": "./bin/ultra-clean.js",
     "system_clean": "./bin/ultra-clean.js"
   },
