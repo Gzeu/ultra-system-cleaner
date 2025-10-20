@@ -1,6 +1,6 @@
-# 🔥 Ultra System Cleaner
+# 🔥 Ultra System Cleaner v1.3.0
 
-> Cross-platform system cleanup tool with beautiful CLI interface - Node.js version of PowerShell cleanup script
+> **Enterprise-grade cross-platform system cleanup tool** with beautiful CLI interface, comprehensive security features, advanced analytics, and flexible configuration system
 
 [![npm version](https://img.shields.io/npm/v/@gzeu/ultra-system-cleaner.svg?style=flat-square)](https://www.npmjs.com/package/@gzeu/ultra-system-cleaner)
 [![Downloads](https://img.shields.io/npm/dm/@gzeu/ultra-system-cleaner.svg?style=flat-square)](https://www.npmjs.com/package/@gzeu/ultra-system-cleaner)
@@ -12,7 +12,9 @@
 - 🚀 **Ultra-fast cleanup** - Optimized for maximum performance
 - 🌍 **Cross-platform** - Works on Windows, macOS, and Linux  
 - 🎨 **Beautiful CLI** - Interactive interface with colors, animations and ASCII art
-- 🔒 **Safe operations** - Built-in safety checks and dry-run mode
+- 🔒 **Enterprise security** - Backup, logging, recovery, and validation systems
+- 📊 **Advanced analytics** - Comprehensive tracking and reporting capabilities
+- ⚙️ **Flexible configuration** - Custom paths, exclude patterns, and settings
 - 📦 **NPM integration** - Cleans NPM, Yarn, and PNPM caches
 - 🌐 **Browser cleanup** - Supports Chrome, Firefox, Edge, Safari
 - 🎯 **Customizable** - Choose specific areas to clean
@@ -55,9 +57,20 @@ ultra-clean --help       # Show all options
 
 ### Advanced Usage
 ```bash
-ultra-clean --quick --yes           # Quick cleanup, skip confirmations
-ultra-clean --deep --verbose        # Deep cleanup with detailed output
-ultra-clean --dry-run --no-color    # Preview without colors
+# Enterprise security with backup and logging
+ultra-clean --deep --verbose-logging
+
+# Analytics and reporting
+ultra-clean --generate-report analytics.html --export-format html --dry-run
+
+# Custom configuration
+ultra-clean --config ~/enterprise-config.json --quick
+
+# Security-focused cleanup
+ultra-clean --no-backup --dry-run --verbose-logging
+
+# Analytics for specific time period
+ultra-clean --report-period 7 --dry-run
 ```
 
 ## 🎯 What Gets Cleaned
@@ -105,25 +118,87 @@ ultra-clean --dry-run --no-color    # Preview without colors
 | `-v, --verbose` | 📝 Verbose output with detailed logs |
 | `-y, --yes` | ✅ Skip all confirmations |
 | `--no-color` | 🎨 Disable colors and formatting |
+| `-c, --config <path>` | 📋 Use custom configuration file |
+| `--save-config <path>` | 💾 Save current settings to config file |
+| `--no-backup` | 🚫 Disable backup creation (less safe) |
+| `--no-logging` | 🔇 Disable operation logging |
+| `--verbose-logging` | 📝 Enable detailed security logging |
+| `--no-analytics` | 📊 Disable analytics tracking |
+| `--generate-report <path>` | 📋 Generate analytics report to file |
+| `--export-format <format>` | 📄 Report format (json/csv/html) |
+| `--report-period <days>` | 📅 Report period (7/30/all) |
 | `--help` | 📚 Show help information |
 | `--version` | 📝 Show version number |
 
-## 🛡️ Safety Features
+## 🛡️ Enterprise Security Features
 
-- **Dry Run Mode**: Preview what will be cleaned before deletion
-- **Smart Detection**: Only cleans known safe temporary and cache directories
-- **Cross-Platform**: Respects OS-specific file system permissions
-- **Error Handling**: Graceful handling of permission errors
-- **Confirmation Prompts**: Interactive confirmations for destructive operations
-- **Selective Cleaning**: Choose specific areas to clean
+- **🛡️ Automatic Backup System**: Creates backups before all critical operations
+- **📋 Comprehensive Logging**: 4-level logging (ERROR, WARN, INFO, SUCCESS) for audit trails
+- **🔄 Recovery Mechanisms**: Restore accidentally deleted files with rollback capabilities
+- **🔐 Security Validation**: Pre-operation validation for paths and permissions
+- **📊 Operation Tracking**: Real-time monitoring of all cleanup activities
+- **🚫 Dry Run Mode**: Preview what will be cleaned before deletion
+- **🎯 Smart Detection**: Only cleans known safe temporary and cache directories
+- **🌐 Cross-Platform Security**: Respects OS-specific file system permissions
+- **⚠️ Error Handling**: Graceful handling of permission errors and locked files
+- **✅ Confirmation Prompts**: Interactive confirmations for destructive operations
+- **🎛️ Selective Cleaning**: Choose specific areas to clean with exclude patterns
 
-## 📊 Performance
+## 📊 Advanced Analytics & Reporting
+
+- **📈 Operation Tracking**: Real-time monitoring of all cleanup activities with detailed metrics
+- **📋 Multi-Format Reports**: Generate reports in JSON, CSV, and HTML formats for analysis
+- **📊 Trend Analysis**: Track cleanup patterns and predict future space recovery needs
+- **⏱️ Performance Monitoring**: Monitor operation duration, file counts, and processing speed
+- **🎯 Category Analysis**: Detailed breakdown of cleanup by file type and location
+- **📅 Historical Data**: Persistent storage of cleanup history for trend analysis
+- **📄 Export Capabilities**: Export analytics data for external analysis and reporting
+- **🎨 Visual Reports**: HTML reports with tables, statistics, and visual elements
+- **📊 Executive Dashboards**: Professional reports suitable for management review
+- **🔍 Audit Trails**: Complete operation history for compliance and troubleshooting
+
+## ⚙️ Flexible Configuration System
+
+- **📋 Custom Configuration Files**: Define your own cleanup paths and patterns
+- **🚫 Global Exclude Patterns**: System-wide patterns for files to never touch
+- **🎯 Category-Specific Settings**: Different rules for different types of cleanup
+- **🔄 Configuration Merging**: CLI options override config file settings intelligently
+- **💾 Auto-Discovery**: Automatically finds config files in standard locations
+- **📝 Configuration Export**: Save your current settings for reuse
+- **🏢 Enterprise Templates**: Pre-configured setups for different environments
+- **🔧 Live Configuration**: Modify settings without restarting the application
+
+## 📊 Performance & Reliability
 
 - **Ultra-fast deletion** using optimized algorithms
-- **Parallel processing** where safe
-- **Memory efficient** streaming operations
+- **Parallel processing** where safe and beneficial
+- **Memory efficient** streaming operations for large file sets
 - **Cross-platform compatibility** (Windows, macOS, Linux)
-- **Minimal dependencies** for fast installation
+- **Minimal dependencies** for fast installation and reduced attack surface
+- **Error recovery** with graceful degradation and detailed error reporting
+
+## 🏢 Enterprise Capabilities
+
+Ultra System Cleaner v1.3.0 is designed for enterprise environments with:
+
+### Production-Ready Features
+- **🛡️ Enterprise Security**: Backup, logging, recovery, and compliance features
+- **📊 Advanced Analytics**: Comprehensive tracking and reporting for IT management
+- **⚙️ Flexible Configuration**: Custom paths, exclude patterns, and team settings
+- **🔄 Automated Operations**: Scheduling and batch processing capabilities
+- **📋 Audit Compliance**: Detailed logs and reports for regulatory requirements
+
+### Team Collaboration
+- **Multi-user Support**: Safe for teams with individual analytics tracking
+- **Configuration Sharing**: Share cleanup configurations across team members
+- **Centralized Logging**: Aggregate analytics across multiple machines
+- **Report Distribution**: Share cleanup reports with IT management
+
+### DevOps Integration
+- **CI/CD Ready**: Automated cleanup in deployment pipelines
+- **Container Support**: Works in Docker and cloud environments
+- **API-Ready Architecture**: Extensible for custom integrations
+- **Monitoring Integration**: Compatible with enterprise monitoring tools
 
 ## 🔄 Supported Platforms
 
@@ -141,7 +216,7 @@ ultra-clean --dry-run --no-color    # Preview without colors
 
 ## 🐛 Issues & Contributing
 
-Found a bug or want to contribute? 
+Found a bug or want to contribute?
 
 - 🐛 **Report issues**: [GitHub Issues](https://github.com/Gzeu/ultra-system-cleaner/issues)
 - 📝 **Contributions**: [Pull Requests Welcome](https://github.com/Gzeu/ultra-system-cleaner/pulls)
@@ -164,5 +239,5 @@ If you find this tool helpful:
 
 <div align="center">
   <strong>🚀 Made with ❤️  by <a href="https://github.com/Gzeu">George Pricop</a></strong><br>
-  <em>Blockchain Developer & AI Automation Specialist</em>
+  <em>Enterprise System Cleanup Tool - Production Ready</em>
 </div>

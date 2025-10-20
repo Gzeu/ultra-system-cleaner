@@ -1,6 +1,6 @@
 {
-  "version": "1.0.0",
-  "description": "Ultra System Cleaner Configuration File",
+  "version": "1.3.0",
+  "description": "Ultra System Cleaner Configuration File - Enterprise Edition with Security, Analytics, and Advanced Features",
 
   "global": {
     "enabled": true,
@@ -10,39 +10,59 @@
     "backup": true,
     "backupLocation": "~/.ultra-cleaner-backups",
     "logLevel": "info",
-    "logFile": "~/.ultra-cleaner.log"
+    "logFile": "~/.ultra-cleaner.log",
+    "analytics": true,
+    "analyticsLocation": "~/.ultra-cleaner-analytics",
+    "reportFormat": "json",
+    "reportLocation": "~/Documents/ultra-cleaner-reports",
+    "securityLevel": "standard",
+    "autoRecovery": true,
+    "validation": true,
+    "interactive": true
   },
 
   "categories": {
     "system": {
       "enabled": true,
       "priority": 1,
-      "description": "System temporary files and caches"
+      "description": "System temporary files and caches with security validation",
+      "backup": true,
+      "analytics": true
     },
     "user": {
       "enabled": true,
       "priority": 2,
-      "description": "User-specific cache and temporary data"
+      "description": "User-specific cache and temporary data with analytics tracking",
+      "backup": true,
+      "analytics": true
     },
     "browsers": {
       "enabled": true,
       "priority": 3,
-      "description": "Web browser caches and data"
+      "description": "Web browser caches and data with security scanning",
+      "backup": true,
+      "analytics": true
     },
     "apps": {
       "enabled": true,
       "priority": 4,
-      "description": "Application-specific cache and temporary files"
+      "description": "Application-specific cache and temporary files with validation",
+      "backup": true,
+      "analytics": true
     },
     "npm": {
       "enabled": true,
       "priority": 5,
-      "description": "Node.js and package manager caches"
+      "description": "Node.js and package manager caches with dependency analysis",
+      "backup": false,
+      "analytics": true
     },
     "logs": {
       "enabled": true,
       "priority": 6,
-      "description": "System and application log files"
+      "description": "System and application log files with security filtering",
+      "backup": false,
+      "analytics": false
     }
   },
 
@@ -51,17 +71,22 @@
       "name": "custom-development",
       "enabled": true,
       "category": "user",
+      "securityLevel": "standard",
+      "backup": true,
+      "analytics": true,
       "paths": [
         {
           "path": "~/Projects/*/node_modules/.cache",
-          "description": "Project-specific cache directories",
+          "description": "Project-specific cache directories with security validation",
           "recursive": true,
-          "excludePatterns": ["**/important-cache/**"]
+          "excludePatterns": ["**/important-cache/**"],
+          "validation": true
         },
         {
           "path": "~/Downloads/temp",
-          "description": "Temporary download folder",
-          "recursive": true
+          "description": "Temporary download folder with analytics tracking",
+          "recursive": true,
+          "analytics": true
         }
       ]
     },
@@ -69,12 +94,17 @@
       "name": "work-files",
       "enabled": false,
       "category": "user",
+      "securityLevel": "high",
+      "backup": true,
+      "analytics": true,
       "paths": [
         {
           "path": "~/Documents/Work/temp",
-          "description": "Work-related temporary files",
+          "description": "Work-related temporary files with enhanced security",
           "recursive": true,
-          "excludePatterns": ["**/*.important", "**/backup/**"]
+          "excludePatterns": ["**/*.important", "**/backup/**"],
+          "validation": true,
+          "backup": true
         }
       ]
     }
@@ -86,17 +116,48 @@
       "**/.git/**",
       "**/backup/**",
       "**/*.log",
-      "**/important*/**"
+      "**/important*/**",
+      "**/.ultra-cleaner-backups/**",
+      "**/.ultra-cleaner-analytics/**"
     ],
     "perCategory": {
       "browsers": [
         "**/Default/Extensions/**",
-        "**/Default/Local Extension Settings/**"
+        "**/Default/Local Extension Settings/**",
+        "**/Default/Storage/**"
       ],
       "apps": [
-        "**/Microsoft/Teams/Meeting Recordings/**"
+        "**/Microsoft/Teams/Meeting Recordings/**",
+        "**/Adobe/**/Cache/**"
+      ],
+      "system": [
+        "**/Windows/WinSxS/**",
+        "**/System32/config/**"
       ]
     }
+  },
+
+  "analytics": {
+    "enabled": true,
+    "location": "~/.ultra-cleaner-analytics",
+    "retentionDays": 90,
+    "autoExport": false,
+    "exportFormats": ["json", "html"],
+    "reportFrequency": "weekly",
+    "includeSystemInfo": true,
+    "trackPerformance": true,
+    "trackErrors": true
+  },
+
+  "security": {
+    "level": "standard",
+    "backupBeforeDelete": true,
+    "validatePaths": true,
+    "scanForMalware": false,
+    "encryptBackups": false,
+    "requireConfirmation": true,
+    "allowedPathsOnly": false,
+    "blockSystemPaths": true
   },
 
   "includePatterns": {
@@ -106,7 +167,9 @@
       "**/*.cache",
       "**/cache/**",
       "**/temp/**",
-      "**/tmp/**"
+      "**/tmp/**",
+      "**/*.log",
+      "**/logs/**"
     ]
   },
 
@@ -116,7 +179,10 @@
     "dayOfWeek": "sunday",
     "time": "02:00",
     "categories": ["system", "user", "browsers"],
-    "dryRun": true
+    "dryRun": true,
+    "notifications": true,
+    "backup": true,
+    "analytics": true
   },
 
   "notifications": {
@@ -124,14 +190,19 @@
     "desktopNotifications": true,
     "sound": true,
     "completionReport": true,
-    "errorAlerts": true
+    "errorAlerts": true,
+    "analyticsSummary": true,
+    "securityAlerts": true
   },
 
   "performance": {
     "maxParallelJobs": 4,
     "chunkSize": 1000,
     "timeout": 30000,
-    "retryAttempts": 3
+    "retryAttempts": 3,
+    "memoryLimit": "1GB",
+    "cpuPriority": "normal",
+    "progressReporting": true
   },
 
   "backup": {
@@ -140,6 +211,18 @@
     "retentionDays": 30,
     "compression": true,
     "encrypt": false,
-    "maxSizeGB": 10
+    "maxSizeGB": 10,
+    "autoCleanup": true,
+    "verifyIntegrity": true
+  },
+
+  "reporting": {
+    "enabled": true,
+    "formats": ["json", "html", "csv"],
+    "autoGenerate": false,
+    "frequency": "monthly",
+    "includeAnalytics": true,
+    "includeSecurity": true,
+    "outputDirectory": "~/Documents/ultra-cleaner-reports"
   }
 }
