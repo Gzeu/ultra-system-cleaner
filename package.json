@@ -1,7 +1,7 @@
 {
   "name": "@gzeu/ultra-system-cleaner",
-  "version": "1.1.2",
-  "description": "🔥 Ultra-performant cross-platform system cleaner with beautiful CLI interface and configuration system",
+  "version": "1.3.0",
+  "description": "🔥 Ultra-performant cross-platform system cleaner with beautiful CLI interface, configuration system, enterprise-grade security features, and comprehensive analytics",
   "keywords": [
     "system-cleaner",
     "disk-cleanup",
@@ -12,7 +12,13 @@
     "cross-platform",
     "cli",
     "cleanup-tool",
-    "performance"
+    "performance",
+    "backup",
+    "security",
+    "logging",
+    "analytics",
+    "reporting",
+    "enterprise"
   ],
   "main": "lib/index.js",
   "bin": {

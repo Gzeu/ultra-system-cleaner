@@ -116,6 +116,13 @@ async function main() {
         .option('--no-color', '🎨 Disable colors')
         .option('-c, --config <path>', '📋 Use custom configuration file')
         .option('--save-config <path>', '💾 Save current settings to config file')
+        .option('--no-backup', '🚫 Disable backup creation (less safe)')
+        .option('--no-logging', '🔇 Disable operation logging')
+        .option('--verbose-logging', '📝 Enable verbose logging')
+        .option('--no-analytics', '📊 Disable analytics tracking')
+        .option('--generate-report <path>', '📋 Generate analytics report to file (format from --export-format)')
+        .option('--export-format <format>', '📄 Report format (json/csv/html)', 'json')
+        .option('--report-period <days>', '📅 Report period (7/30/all)', 'all')
         .action(async (options) => {
             try {
                 // Handle no-color option
@@ -130,8 +137,19 @@ async function main() {
                 let cleanupOptions = {
                     verbose: options.verbose || false,
                     dryRun: options.dryRun || false,
-                    skipConfirmation: options.yes || false
+                    skipConfirmation: options.yes || false,
+                    enableBackup: !options.noBackup,
+                    enableLogging: !options.noLogging,
+                    enableAnalytics: !options.noAnalytics,
+                    generateReport: options.generateReport || null,
+                    exportFormat: options.exportFormat || 'json'
                 };
+
+                // Override logging level if verbose-logging is specified
+                if (options.verboseLogging) {
+                    cleanupOptions.enableLogging = true;
+                    cleanupOptions.verbose = true;
+                }
 
                 // Merge configuration with CLI options
                 cleanupOptions = configManager.mergeOptions(cleanupOptions);
